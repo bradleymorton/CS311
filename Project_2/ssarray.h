@@ -37,14 +37,14 @@ public:
 	//1 parameter constructor
 	//Precondition- number for size must be at greater than or equal to zero
 	//Postcondition- array of size passed of type passed is created. 
-	SSArray(int size) : _size(size), _array(new value_type[_size])[]
+	SSArray(int size) : _size(size), _array(new value_type[_size])
 	{}
 
 	//2 parameter constructor
 	//Takes size and ArrayType value
 	//Precondition- size must be greater than or equal to 0
 	//Postcondition- array of size and type passed is filled with value passed
-	SSArray(int size, ArrayType value) : _size(size), _array(new value_type)[_size][]
+	SSArray(int size, ArrayType value) : _size(size), _array(new value_type)[_size]
 	{
 		for(int i=0, i<_size, ++i)
 		{
@@ -124,18 +124,129 @@ public:
 		return 
 	}
 
+	}
 
+	//const begin
+	//No precondtions or post conditions
+	const value_type * begin()const
+	{
+		return _array;
+	}
+
+	//end
+	//No preconditions or postconditions
+	value_type * end()
+	{
+		return _array+_size;
+	}
+
+	//const end
+	//No preconditions or postconditions
+	const value_type * end()const
+	{
+		return _array+_size;
+	}
+
+	//[] operator
+	//Preconditon- 0<=input<size
+	//Postconditions- none
+	value_type & operator[](const size_type index)
+	{
+		return _array[index];
+	}
+
+	//const [] operator
+	//Preconditon- 0<=input<size
+	//Postconditions- none
+	const value_type & operator[](const size_type index)const
+	{
+		return _array[index];
+	}
 
 
 };
 
 
+//Equality operator (==)
+//Returns true if two SSArrays with the same type are compared and
+//the SSArrays are the same size and possess the same elements in
+//the same locations, and otherwise returns false.  
+//Precondition- both SSArrays must be of the same type. 
+template <typename ArrayType>
+bool operator==(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	if(lhs.size()!=rhs.size())
+	{
+		return false;
+	}
+	for(int i=0, i<lhs.size(); ++i)
+	{
+		if(lhs[i]!=rhs[i])
+			return false;
+	}
+	return true;
+}
+
+//Inequality operator (!=)
+//Returns true if two SSArrays of the same type have different sizes 
+//or they have at least one different element, returns false. 
+//Precondition- both SSArrays must be of the same type. 
+template<typename ArrayType>
+bool operator!=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	return !(lhs==rhs);
+}
 
 
+//Less than operator (<)
+//Takes two SSArrays of the same type, compares first element of each.
+//Returns true if the first SSArray's element is lower than the first 
+//element of the second. If the first of each are the same, it moves 
+//to the next and looks again.  
+//Precondition- both SSArrays must be of the same type. 
+template <typename ArrayType>
+bool operator <(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
 
 
+//Less than or equal operator (<=)
+//Takes two SSArrays of the same type, compares first element of each.
+//Returns true if the first SSArray's element is less than or equal to 
+//the first element of the second. If the first of each are the same, it moves 
+//to the next and looks again.  
+//Precondition- both SSArrays must be of the same type. 
+template <typename ArrayType>
+bool operator <=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	return !(rhs>lhs);
+}
+
+//Greater than operator (>)
+//Takes two SSArrays of the same type, compares first element of each.
+//Returns true if the first SSArray's element is higher than the first 
+//element of the second. If the first of each are the same, it moves 
+//to the next and looks again.  
+//Precondition- both SSArrays must be of the same type.
+template <typename ArrayType>
+bool operator >(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	return !(lhs<=rhs);
+}
 
 
+//Greaten than or equal operator (>=)
+//Takes two SSArrays of the same type, compares first element of each.
+//Returns true if the first SSArray's element is greater than or equal to 
+//the first element of the second. If the first of each are the same, it moves 
+//to the next and looks again.  
+//Precondition- both SSArrays must be of the same type. 
+template <typename ArrayType>
+bool operator <=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+{
+	return !(rhs<lhs);
+}
 
 
 
