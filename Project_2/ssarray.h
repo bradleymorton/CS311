@@ -23,7 +23,7 @@ public: //Member types
 	using size_type= std::size_t;
 private: //Data members
 	size_type _size;
-	value_type= *_array;
+	value_type *_array;
 
 
 public: 
@@ -31,22 +31,22 @@ public:
 	//Default constructor
 	//No preconditions
 	//Postconditions: array with size 8 exists
-	SSArray(): _size(8), _array(new value_type[_size])
+	SSArray(): _size(8), _array(new value_type[8])
 	{}
 
 	//1 parameter constructor
 	//Precondition- number for size must be at greater than or equal to zero
 	//Postcondition- array of size passed of type passed is created. 
-	SSArray(int size) : _size(size), _array(new value_type[_size])
+	SSArray(int size) : _size(size), _array(new value_type[size])
 	{}
 
 	//2 parameter constructor
 	//Takes size and ArrayType value
 	//Precondition- size must be greater than or equal to 0
 	//Postcondition- array of size and type passed is filled with value passed
-	SSArray(int size, ArrayType value) : _size(size), _array(new value_type)[_size]
+	SSArray(int size, ArrayType value) : _size(size), _array(new value_type[size])
 	{
-		for(int i=0, i<_size, ++i)
+		for(int i=0; i<_size; ++i)
 		{
 			_array[i]=value;
 		}
@@ -63,11 +63,11 @@ public:
 	//Copy constructor
 	//Precondition- a valid SSArray object
 	//Postcondition- a new SSArray object has been created. 
-	SSArray(const SSArray & base) : _size(base.size(), _array(new value_type[base.size()]))
+	SSArray(const SSArray & base) : _size(base.size()), _array(new value_type[base.size()])
 	{
 		for(int i=0; i<_size; ++i)
 		{
-			_array[i]=base.[i];
+			_array[i]=base[i];
 		}
 	}
 
@@ -75,10 +75,10 @@ public:
 	//Precondition- the prior SSArray object was valid
 	//Poscondition- a new SSArray with the data of the old array will
 	//be created and the old SSArray will be set to null
-	SSArray(SSArray && oldSSArray) : _size(oldSSArray.size(), _array(base._array))
+	SSArray(SSArray && oldSSArray)noexcept : _size(oldSSArray.size()), _array(oldSSArray._array ) 
 	{
 		oldSSArray._size=0;
-		oldSSArray._array= NULL;
+		oldSSArray._array= nullptr;
 	}
 
 
@@ -90,8 +90,7 @@ public:
 	SSArray & operator=(const SSArray & base)
 	{
 		SSArray temp(base);
-		std::swap(temp._size, _size);
-		std::swap(temp._array, _array);
+		mswap(temp);
 		return *this;
 
 	}
@@ -103,15 +102,24 @@ public:
 	//first is created, and the other array still holds its values. 
 	SSArray & operator = (SSArray && base) noexcept
 	{
-		std::swap(temp._size, _size);
-		std::swap(temp._array, _array);
+		mswap(base);    //make mswap member
 		return *this;
 	}
 
-
+	private: 
+	//mswap
+	//A function that swaps the size and elements
+	//of two SSArrays
+	//Precondition- both SSArrays are valid. 
+	void mswap(SSArray & toSwap) noexcept
+	{
+		std::swap(_size, toSwap._size);
+		std::swap(_array, toSwap._array);
+	}
+	public: 
 	//Returns the size of the SSArray
 	//No pre or post conditions
-	std::size_t size()
+	std::size_t size()const
 	{
 		return _size;
 	}
@@ -121,10 +129,9 @@ public:
 	//No precondtions or post conditions
 	value_type * begin()
 	{
-		return 
+		return _array;
 	}
 
-	}
 
 	//const begin
 	//No precondtions or post conditions
@@ -179,7 +186,7 @@ bool operator==(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 	{
 		return false;
 	}
-	for(int i=0, i<lhs.size(); ++i)
+	for(int i=0; i<lhs.size(); ++i)
 	{
 		if(lhs[i]!=rhs[i])
 			return false;
@@ -220,7 +227,7 @@ bool operator <(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 template <typename ArrayType>
 bool operator <=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 {
-	return !(rhs>lhs);
+	return !(rhs<lhs);
 }
 
 //Greater than operator (>)
@@ -232,20 +239,20 @@ bool operator <=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 template <typename ArrayType>
 bool operator >(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 {
-	return !(lhs<=rhs);
+	return rhs<lhs;
 }
 
 
-//Greaten than or equal operator (>=)
+//Greater than or equal operator (>=)
 //Takes two SSArrays of the same type, compares first element of each.
 //Returns true if the first SSArray's element is greater than or equal to 
 //the first element of the second. If the first of each are the same, it moves 
 //to the next and looks again.  
 //Precondition- both SSArrays must be of the same type. 
 template <typename ArrayType>
-bool operator <=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
+bool operator >=(const SSArray<ArrayType> & lhs, const SSArray<ArrayType> & rhs)
 {
-	return !(rhs<lhs);
+	return !(lhs<rhs);
 }
 
 
