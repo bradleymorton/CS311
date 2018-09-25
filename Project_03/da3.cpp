@@ -13,7 +13,26 @@ int modExp(int a,
            int b,
            int n)
 {
-    return 42;  // Dummy return
-    // TODO: Write this!!!
+    if(n==1)
+    {
+    	return 0;
+    }
+    else if(b==0)
+    {
+    	return 1;
+    }
+    else
+    {
+    	return exp(a,b/2);
+    }
+}
+
+int exp(int base, int exponent)
+{
+	if(exponent==0)
+	{
+		return 1;
+	}
+	else return base*exp(base, exponent-1);
 }
 

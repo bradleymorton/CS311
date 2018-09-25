@@ -12,7 +12,10 @@
 #include <cstddef>
 using std::size_t;
 
+#include <vector>
+//For std::vector
 
+//Class provided by Glenn Chappel
 // **************************************************************** // *
 // Begin DO-NOT-CHANGE section                                      // *
 // Do not alter the lines below                                     // *
@@ -71,8 +74,17 @@ template <typename ValueType>
 ValueType lookup(const LLNode<ValueType> * head,
                  size_t index)
 {
-    return ValueType();  // Dummy return
-    // TODO: Write this!!!
+	size_t i=0;
+	auto p=head;
+	for(size_t i; i!=index; ++i)
+	{
+		if(p==nullptr)
+		{
+			throw std::out_of_range("The index is larger than the list.");
+		}
+		p=p->_next;
+	}
+    return p->_data;
 }
 
 
@@ -88,8 +100,28 @@ template <typename RAIter>
 size_t uniqueCount(RAIter first,
                    RAIter last)
 {
-    return size_t(42);  // Dummy return
-    // TODO: Write this!!!
+	std::vector<RAIter> uniqueCount;
+	RAIter p=first;
+	bool present=false;
+	while(p != last)
+	{
+		for(int i =0; i<uniqueCount.size(); ++i)
+		{
+			if(p->_data==uniqueCount[i])
+			{
+				present=true;
+				break;
+			}
+		}
+		if(present==false)
+		{
+			uniqueCount.push_back(p->_data);
+		}
+
+		present=false;
+		p= p->_next;
+	}
+    return size_t(uniqueCount);
 }
 
 
