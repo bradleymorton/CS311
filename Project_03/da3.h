@@ -14,6 +14,8 @@ using std::size_t;
 
 #include <vector>
 //For std::vector
+#include<stdexcept>
+//For std::out_of_range
 
 //Class provided by Glenn Chappel
 // **************************************************************** // *
@@ -74,25 +76,35 @@ template <typename ValueType>
 ValueType lookup(const LLNode<ValueType> * head,
                  size_t index)
 {
-	size_t i=0;
-	auto p=head;
-	for(size_t i; i!=index; ++i)
+	for(index; index>=0; --index)
 	{
-		if(p==nullptr)
+		if(head==nullptr)
 		{
 			throw std::out_of_range("The index is larger than the list.");
 		}
-		p=p->_next;
+		head=head->_next;
 	}
-    return p->_data;
-}
+    return head->data;
 
 
 template <typename Func>
 void didItThrow(Func f,
                 bool & threw)
 {
-    // TODO: Write this!!!
+    try
+    {
+    	f();
+    }
+    catch
+    {
+    	threw=true;
+    	throw();
+    }
+
+
+
+	threw=false;
+    return;
 }
 
 
@@ -101,13 +113,12 @@ size_t uniqueCount(RAIter first,
                    RAIter last)
 {
 	std::vector<RAIter> uniqueCount;
-	RAIter p=first;
 	bool present=false;
-	while(p != last)
+	while(first!= last)
 	{
 		for(int i =0; i<uniqueCount.size(); ++i)
 		{
-			if(p->_data==uniqueCount[i])
+			if(first->_data==uniqueCount[i])
 			{
 				present=true;
 				break;
@@ -115,11 +126,11 @@ size_t uniqueCount(RAIter first,
 		}
 		if(present==false)
 		{
-			uniqueCount.push_back(p->_data);
+			uniqueCount.push_back(first->_data);
 		}
 
 		present=false;
-		p= p->_next;
+		first= first->_next;
 	}
     return size_t(uniqueCount);
 }

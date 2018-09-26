@@ -27,6 +27,8 @@ int modExp(int a,
     }
 }
 
+
+//This function is recursive and called
 int exp(int base, int exponent)
 {
 	if(exponent==0)
