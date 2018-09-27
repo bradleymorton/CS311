@@ -89,6 +89,7 @@ ValueType lookup(const LLNode<ValueType> * head,
 			return head->_data;
 		}
 		head=head->_next;
+		--index;
 	}
     
 }
