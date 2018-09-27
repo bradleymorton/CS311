@@ -12,9 +12,9 @@
 //This function is recursive and called
 int exp(int base, int exponent)
 {
-	if(exponent==0)
+	if(exponent==1)
 	{
-		return 1;
+		return base;
 	}
 	else return base*exp(base, exponent-1);
 }
@@ -33,7 +33,7 @@ int modExp(int a,
     }
     else
     {
-    	return exp(a,b/2);
+    	return exp(a,b/2)*exp(a,b/2)%n;
     }
 }
 

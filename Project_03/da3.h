@@ -78,15 +78,19 @@ template <typename ValueType>
 ValueType lookup(const LLNode<ValueType> * head,
                  size_t index)
 {
-	for(index; index>=0; --index)
+	while(true)
 	{
 		if(head==nullptr)
 		{
 			throw std::out_of_range("The index is larger than the list.");
 		}
+		else if(index==0)
+		{
+			return head->_data;
+		}
 		head=head->_next;
 	}
-    return head->_data;
+    
 }
 
 
