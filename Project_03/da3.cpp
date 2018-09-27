@@ -19,6 +19,9 @@ int exp(std::size_t base, std::size_t exponent)
 	else return base*exp(base, exponent-1);
 }
 
+
+//This function is prototyped in da3.h, and is to be called by
+//the test program.
 int modExp(int a,
            int b,
            int n)
