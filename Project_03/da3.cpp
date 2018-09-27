@@ -9,7 +9,10 @@
 #include "da3.h"       // For Project 3 prototypes & templates
 
 
-//This function is recursive and called
+//This function is recursive and called by the 
+//modExp function, and cannot be called by the 
+//test program, or any other program linked to these
+//files. 
 int exp(std::size_t base, std::size_t exponent)
 {
 	if(exponent==1)
