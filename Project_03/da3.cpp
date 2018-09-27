@@ -10,7 +10,7 @@
 
 
 //This function is recursive and called
-int exp(int base, int exponent)
+int exp(std::size_t base, std::size_t exponent)
 {
 	if(exponent==1)
 	{
@@ -23,9 +23,9 @@ int modExp(int a,
            int b,
            int n)
 {
-	long long aa=a;
-	long long bb=b;
-	long long nn=n;
+	std::size_t aa=a;
+	std::size_t bb=b;
+	std::size_t nn=n;
     if(n==1)
     {
     	return 0;
