@@ -23,6 +23,9 @@ int modExp(int a,
            int b,
            int n)
 {
+	long long aa=a;
+	long long bb=b;
+	long long nn=n;
     if(n==1)
     {
     	return 0;
@@ -31,9 +34,13 @@ int modExp(int a,
     {
     	return 1;
     }
+    else if(b%2==0)
+    {
+    	return exp(aa,bb/2)*exp(aa,bb/2)%nn;
+    }
     else
     {
-    	return exp(a,b/2)*exp(a,b/2)%n;
+    	return ((aa%nn)*(exp(aa,bb/2)*exp(aa,bb/2))%nn)%nn;
     }
 }
 
