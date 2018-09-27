@@ -9,6 +9,16 @@
 #include "da3.h"       // For Project 3 prototypes & templates
 
 
+//This function is recursive and called
+int exp(int base, int exponent)
+{
+	if(exponent==0)
+	{
+		return 1;
+	}
+	else return base*exp(base, exponent-1);
+}
+
 int modExp(int a,
            int b,
            int n)
@@ -28,13 +38,5 @@ int modExp(int a,
 }
 
 
-//This function is recursive and called
-int exp(int base, int exponent)
-{
-	if(exponent==0)
-	{
-		return 1;
-	}
-	else return base*exp(base, exponent-1);
-}
+
 

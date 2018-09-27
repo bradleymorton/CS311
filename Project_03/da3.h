@@ -9,6 +9,8 @@
 #ifndef FILE_DA3_H_INCLUDED
 #define FILE_DA3_H_INCLUDED
 
+#include <type_traits>
+
 #include <cstddef>
 using std::size_t;
 
@@ -84,7 +86,8 @@ ValueType lookup(const LLNode<ValueType> * head,
 		}
 		head=head->_next;
 	}
-    return head->data;
+    return head->_data;
+}
 
 
 template <typename Func>
@@ -95,10 +98,10 @@ void didItThrow(Func f,
     {
     	f();
     }
-    catch
+    catch(...)
     {
     	threw=true;
-    	throw();
+    	throw;
     }
 
 
@@ -112,13 +115,14 @@ template <typename RAIter>
 size_t uniqueCount(RAIter first,
                    RAIter last)
 {
-	std::vector<RAIter> uniqueCount;
+	using value= typename std::remove_reference<decltype(*first)>::type;
+	std::vector<value> count;
 	bool present=false;
 	while(first!= last)
 	{
-		for(int i =0; i<uniqueCount.size(); ++i)
+		for(int i =0; i<count.size(); ++i)
 		{
-			if(first->_data==uniqueCount[i])
+			if(*first==count[i])
 			{
 				present=true;
 				break;
@@ -126,13 +130,13 @@ size_t uniqueCount(RAIter first,
 		}
 		if(present==false)
 		{
-			uniqueCount.push_back(first->_data);
+			count.push_back(*first);
 		}
 
 		present=false;
-		first= first->_next;
+		++first;
 	}
-    return size_t(uniqueCount);
+    return size_t(count.size());
 }
 
 
