@@ -23,10 +23,6 @@ int countHDT(int dim_x, int dim_y, int forbid1_x, int forbid1_y, int forbid2_x, 
 int countHDT_recurse(vector<vector<int>> board, int dim_x, int dim_y, int squaresLeft)
 {	
 
-	if(squaresLeft%2==1)
-	{
-		return 0;
-	}
 	if(squaresLeft==0)
 	{
 		return 1;
