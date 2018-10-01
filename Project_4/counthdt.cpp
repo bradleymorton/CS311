@@ -7,6 +7,7 @@
 #include "counthdt.h" //For prototypes
 #include <vector>
 using std::vector;
+#include <iostream>
 
 
 int countHDT(int dim_x, int dim_y, int forbid1_x, int forbid1_y, int forbid2_x, int forbid2_y)
@@ -32,10 +33,9 @@ int countHDT_recurse(vector<vector<int>> board, int dim_x, int dim_y, int square
 	}
 
 	int total=0;
-	int i=0, j=0;
-	for(i; i<dim_x; ++i)
+	for(int i=0; i<dim_x; ++i)
 	{
-		for(j; j<dim_y; ++j)
+		for(int j=0; j<dim_y; ++j)
 		{
 			if(board[i][j]==1)
 					continue;
@@ -51,18 +51,17 @@ int countHDT_recurse(vector<vector<int>> board, int dim_x, int dim_y, int square
 				}	
 			}
 			if(j+1<dim_y)
-				if(j+1<dim_y&&board[i][j-1]==0)
+				if(board[i][j+1]==0)
 				{
 					board[i][j]=1;
 					board[i][j+1]=1;
 					total+= countHDT_recurse(board, dim_x, dim_y, squaresLeft-2);
 					board[i][j]=0;
 					board[i][j+1]=0;
-					break;
-				}			
+				}	
+			return total;		
 		}
 	}
-		return total;
 	return 0;
 
 }
