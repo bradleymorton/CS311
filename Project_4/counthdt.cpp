@@ -15,8 +15,7 @@ int countHDT(int dim_x, int dim_y, int forbid1_x, int forbid1_y, int forbid2_x, 
 	vector<vector<int>> board(dim_x, std::vector<int>(dim_y,0));
 	board[forbid1_x][forbid1_y]=1;
 	board[forbid2_x][forbid2_y]=1;
-	countHDT_recurse(board, dim_x, dim_y, dim_y*dim_x);
-	int total=0;
+	int total=countHDT_recurse(board, dim_x, dim_y, dim_y*dim_x);
 	return total;
 }
 
@@ -40,23 +39,21 @@ int countHDT_recurse(vector<vector<int>> board, int dim_x, int dim_y, int square
 			{
 				board[i][j]=1;
 				board[i+1][j]=1;
-				return countHDT_recurse(board, dim_x, dim_y, squaresLeft-2);
+				total+= countHDT_recurse(board, dim_x, dim_y, squaresLeft-2);
 				board[i][j]=0;
 				board[i+1][j]=0;
 			}	
 			if(j+1<dim_y&&board[i][j-1]==0)
 			{
 				board[i][j]=1;
-				board[i][j+1]=1
-				return countHDT_recurse(board, dim_x, dim_y, squaresLeft-2);
+				board[i][j+1]=1;
+				total+= countHDT_recurse(board, dim_x, dim_y, squaresLeft-2);
 				board[i][j]=0;
 				board[i][j+1]=0;
 			}			
 		}
 	}
-
-		//Stuff
-		return total
+		return total;
 	return 0;
 
 }
