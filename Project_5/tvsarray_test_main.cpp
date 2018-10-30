@@ -25,7 +25,7 @@ void userPause()
 
 // Main program
 // Run all tests. Prompt for ENTER before exiting.
-int notmain(int argc,
+int main(int argc,
          char *argv[])
 {
     const std::string tname = "class template TVSArray"
