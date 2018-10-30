@@ -155,6 +155,7 @@ public:
             TVSArray<value_type> newArr(newsize+500000);
             std::copy(begin(),end(),newArr.begin());
             swap(newArr);
+            _size-=500000;
         }
     }
     // insert
