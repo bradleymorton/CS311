@@ -150,10 +150,8 @@ public:
 
         else
         {
-            TVSArray newArr(0);
-            std::copy(begin(), end(), &newArr);
-
-            std::swap(_data, newArr._data);
+            TVSArray newArr(newsize);
+            swap(newArr);
         }
     }
     // insert
