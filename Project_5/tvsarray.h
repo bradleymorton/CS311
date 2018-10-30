@@ -137,7 +137,10 @@ public:
     }
     // swap
     // No-Throw Guarantee
-    void swap(TVSArray & other) noexcept;
+    void swap(TVSArray & other) noexcept
+    {
+        std::swap(*this, other);
+    }
     // ***** TVSArray: data members *****
 private:
     size_type    _capacity;  // Size of our allocated array
