@@ -50,7 +50,7 @@ public:
     {}
     // Copy ctor
     // Strong Guarantee
-    TVSArray(const TVSArray & other):  
+    TVSArray(const TVSArray & other):
                                     _size(other.size()),
                                     _data(new value_type[other.size()]),
                                     _capacity(other._capacity)
@@ -86,7 +86,7 @@ public:
         }
         std::swap(_size, other._size);
         std::swap(_data, other._data);
-        
+
         return *this;
     }
     // Dctor
@@ -152,7 +152,7 @@ public:
 
         else
         {
-            TVSArray newArr(newsize);
+            TVSArray<value_type> newArr(newsize);
             std::copy(begin(),end(),newArr.begin());
             swap(newArr);
         }
