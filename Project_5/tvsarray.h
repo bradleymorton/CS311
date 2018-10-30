@@ -162,8 +162,21 @@ public:
     iterator insert(iterator pos,
                     const value_type & item)
     {
+//        iterator i;
+//        resize(_size+1);
+//        for(i = begin(); i!=end(); i++)
+//        {
+//            if(i==pos)
+//            {
+//                std::rotate(i,end()-1 ,end());
+//                *i = item;
+//                return pos;
+//            }
+//            
+//        }
         return begin();
     }
+
     // erase
     // ??? Guarantee
     iterator erase(iterator pos)
