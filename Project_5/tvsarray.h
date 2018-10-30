@@ -57,6 +57,8 @@ public:
         {
             _data[i]=other[i];
         }
+        _size=other._size;
+        _capacity=other._capacity;
     }
     // Move ctor
     // No-Throw Guarantee
