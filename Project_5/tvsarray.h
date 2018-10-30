@@ -50,16 +50,43 @@ public:
     {}
     // Copy ctor
     // Strong Guarantee
-    TVSArray(const TVSArray & other);
+    TVSArray(const TVSArray & other):  _size(other.size()), _data(new value_type[other.size()])
+    {
+        
+        for(int i=0; i<_size; ++i)
+        {
+            _data[i]=other[i];
+        }
+    }
     // Move ctor
     // No-Throw Guarantee
-    TVSArray(TVSArray && other) noexcept;
+    TVSArray(TVSArray && other) noexcept: _size(other.size()), _data(other._data )
+    {
+        other._size=0;
+        other._data= nullptr;
+    }
+
     // Copy assignment operator
     // ??? Guarantee
-    TVSArray & operator=(const TVSArray & other);
+    TVSArray & operator=(const TVSArray & other)
+    {
+        TVSArray temp(other);
+        mswap(temp);
+        return *this;
+    }
     // Move assignment operator
     // No-Throw Guarantee
-    TVSArray & operator=(TVSArray && other) noexcept;
+    TVSArray & operator=(TVSArray && other) noexcept
+    {
+        if(this == &other)
+        {
+            return *this;
+        }
+        std::swap(_size, other._size);
+        std::swap(_data, other._data);
+        
+        return *this;
+    }
     // Dctor
     // No-Throw Guarantee
     ~TVSArray()
@@ -146,6 +173,11 @@ public:
     }
     // ***** TVSArray: data members *****
 private:
+    void mswap(TVSArray & toSwap) noexcept
+    {
+        std::swap(_size, toSwap._size);
+        std::swap(_data, toSwap._data);
+    }
     size_type    _capacity;  // Size of our allocated array
     size_type    _size;      // Size of client's data
     value_type * _data;      // Pointer to array
