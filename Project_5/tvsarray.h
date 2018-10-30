@@ -150,7 +150,7 @@ public:
 
         else
         {
-            newArr = TVSArray(0);
+            TVSArray newArr(0);
             std::copy(begin(), end(), &newArr);
 
             std::swap(_data, newArr._data);
