@@ -207,3 +207,23 @@ private:
 };  // End class TVSArray
 
 #endif // TVSARRAY_H_INCLUDED
+
+
+
+// void resize(size_type newSize)
+//     {
+//         if (newSize <= _capacity)
+//         {
+//             _size = newSize;
+//         }
+
+//         else
+//         {
+//             auto temp =new value_type[newSize+50000];
+//             std::copy(begin(),end(),temp);
+//             std::swap(temp, _data);
+//             delete [] temp;
+//             _capacity=newSize+50000;
+//             _size=newSize;
+//         }
+//     }
