@@ -152,7 +152,7 @@ public:
 
         else
         {
-            TVSArray<value_type> newArr(newsize+50000);
+            TVSArray<value_type> newArr(newsize+500000);
             std::copy(begin(),end(),newArr.begin());
             swap(newArr);
         }
