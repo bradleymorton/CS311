@@ -143,7 +143,18 @@ public:
     // ??? Guarantee
     void resize(size_type newsize)
     {
-        return;
+        if (newsize <= _capacity)
+        {
+            _size = newsize;
+        }
+
+        else
+        {
+            newArr = TVSArray(0);
+            std::copy(begin(), end(), &newArr);
+
+            std::swap(_data, newArr._data);
+        }
     }
     // insert
     // ??? Guarantee
