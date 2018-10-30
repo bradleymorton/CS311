@@ -139,7 +139,9 @@ public:
     // No-Throw Guarantee
     void swap(TVSArray & other) noexcept
     {
-        std::swap(*this, other);
+        std::swap(_capacity, other._capacity);
+        std::swap(_size, other._size);
+        std::swap(_data, other._data);
     }
     // ***** TVSArray: data members *****
 private:
