@@ -23,8 +23,8 @@
 //     _data points to an array of an arbitary value type, allocated with new[], owned by
 //      *this, holding _capacity of the arbitrary value type. Except: _data may be nullptr, if
 //      _capacity == 0.
-class VSArray {
-    // ***** VSArray: types *****
+class TVSArray {
+    // ***** TVSArray: types *****
 public:
     // value_type: type of data items
     using value_type = int;
@@ -41,7 +41,7 @@ private:
 public:
     // Default ctor & ctor from size
     // Strong Guarantee
-    explicit VSArray(size_type size=0)
+    explicit TVSArray(size_type size=0)
     :_capacity(std::max(size, size_type(DEFAULT_CAP))),
     // _capacity must be declared before _data
     _size(size),
@@ -49,19 +49,19 @@ public:
     {}
     // Copy ctor
     // Strong Guarantee
-    VSArray(const VSArray & other);
+    TVSArray(const TVSArray & other);
     // Move ctor
     // No-Throw Guarantee
-    VSArray(VSArray && other) noexcept;
+    TVSArray(TVSArray && other) noexcept;
     // Copy assignment operator
     // ??? Guarantee
-    VSArray & operator=(const VSArray & other);
+    TVSArray & operator=(const TVSArray & other);
     // Move assignment operator
     // No-Throw Guarantee
-    VSArray & operator=(VSArray && other) noexcept;
+    TVSArray & operator=(TVSArray && other) noexcept;
     // Dctor
     // No-Throw Guarantee
-    ~VSArray()
+    ~TVSArray()
     {
         delete [] _data;
     }
@@ -137,12 +137,12 @@ public:
     }
     // swap
     // No-Throw Guarantee
-    void swap(VSArray & other) noexcept;
-    // ***** VSArray: data members *****
+    void swap(TVSArray & other) noexcept;
+    // ***** TVSArray: data members *****
 private:
     size_type    _capacity;  // Size of our allocated array
     size_type    _size;      // Size of client's data
     value_type * _data;      // Pointer to array
-};  // End class VSArray
+};  // End class TVSArray
 
 #endif // TVSARRAY_H_INCLUDED
