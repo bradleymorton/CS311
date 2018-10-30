@@ -172,7 +172,7 @@ public:
 //                *i = item;
 //                return pos;
 //            }
-//            
+//
 //        }
         return begin();
     }
