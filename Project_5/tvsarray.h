@@ -145,7 +145,10 @@ public:
     // insert
     // ??? Guarantee
     iterator insert(iterator pos,
-                    const value_type & item);
+                    const value_type & item)
+    {
+        return begin();
+    }
     // erase
     // ??? Guarantee
     iterator erase(iterator pos);
