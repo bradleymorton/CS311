@@ -141,7 +141,10 @@ public:
     }
     // resize
     // ??? Guarantee
-    void resize(size_type newsize);
+    void resize(size_type newsize)
+    {
+        return;
+    }
     // insert
     // ??? Guarantee
     iterator insert(iterator pos,
@@ -151,7 +154,10 @@ public:
     }
     // erase
     // ??? Guarantee
-    iterator erase(iterator pos);
+    iterator erase(iterator pos)
+    {
+        return begin();
+    }
     // push_back
     // InsertEnd operation.
     // ??? Guarantee
