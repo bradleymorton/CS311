@@ -209,6 +209,12 @@ public:
         std::swap(_data, other._data);
     }
     // ***** TVSArray: data members *****
+public:
+    public:
+    size_type getCapacity()
+    {
+        return _capacity;
+    }
 private:
     void mswap(TVSArray & toSwap) noexcept
     {
