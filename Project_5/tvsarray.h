@@ -20,8 +20,8 @@
 // Resizable, copyable/movable, exception-safe.
 // Invariants:
 //     0 <= _size <= _capacity.
-//     _data points to an array of int, allocated with new[], owned by
-//      *this, holding _capacity ints. Except: _data may be nullptr, if
+//     _data points to an array of an arbitary value type, allocated with new[], owned by
+//      *this, holding _capacity of the arbitrary value type. Except: _data may be nullptr, if
 //      _capacity == 0.
 class VSArray {
     // ***** VSArray: types *****
