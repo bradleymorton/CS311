@@ -176,6 +176,7 @@ public:
     void push_back(const value_type & item)
     {
         insert(end(), item);
+        ++_size;
     }
     // pop_back
     // RemoveEnd operation.
@@ -183,6 +184,7 @@ public:
     void pop_back()
     {
         erase(end()-1);
+        --_size;
     }
     // swap
     // No-Throw Guarantee
