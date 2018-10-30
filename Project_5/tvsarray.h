@@ -50,15 +50,15 @@ public:
     {}
     // Copy ctor
     // Strong Guarantee
-    TVSArray(const TVSArray & other):  _size(other.size()), _data(new value_type[other.size()])
+    TVSArray(const TVSArray & other):  
+                                    _size(other.size()),
+                                    _data(new value_type[other.size()]),
+                                    _capacity(other._capacity)
     {
-        
         for(int i=0; i<_size; ++i)
         {
             _data[i]=other[i];
         }
-        _size=other._size;
-        _capacity=other._capacity;
     }
     // Move ctor
     // No-Throw Guarantee
