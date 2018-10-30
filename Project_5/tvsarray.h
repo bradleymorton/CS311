@@ -23,11 +23,12 @@
 //     _data points to an array of an arbitary value type, allocated with new[], owned by
 //      *this, holding _capacity of the arbitrary value type. Except: _data may be nullptr, if
 //      _capacity == 0.
+template<typename T>
 class TVSArray {
     // ***** TVSArray: types *****
 public:
     // value_type: type of data items
-    using value_type = int;
+    using value_type = T;
     // size_type: type of sizes & indices
     using size_type = std::size_t;
     // iterator, const_iterator: random-access iterator types
