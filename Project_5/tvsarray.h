@@ -151,6 +151,7 @@ public:
         else
         {
             TVSArray newArr(newsize);
+            std::copy(begin(),end(),newArr.begin());
             swap(newArr);
         }
     }
