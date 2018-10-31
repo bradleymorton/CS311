@@ -42,6 +42,7 @@ private:
 public:
     // Default ctor & ctor from size
     // Strong Guarantee
+    // No pre or post conditions
     explicit TVSArray(size_type size=0)
     :_capacity(std::max(size, size_type(DEFAULT_CAP))),
     // _capacity must be declared before _data
@@ -50,6 +51,8 @@ public:
     {}
     // Copy ctor
     // Strong Guarantee
+    // Precondition- a valid tvsarray object to copy from
+    // Postcondition- a new object is created. 
     TVSArray(const TVSArray & other):
                                     _size(other.size()),
                                     _data(new value_type[other._capacity]),
@@ -67,6 +70,8 @@ public:
     }
     // Move ctor
     // No-Throw Guarantee
+    // Precondition- a valid tvsarray object to move from
+    // Postcondition- the other object is no longer usable
     TVSArray(TVSArray && other) noexcept: _size(other.size()), _data(other._data )
     {
         other._size=0;
@@ -75,6 +80,7 @@ public:
 
     // Copy assignment operator
     // Strong Guarantee
+    // Precondition- a valid tvsarray item
     TVSArray & operator=(const TVSArray & other)
     {
         TVSArray temp(other);
@@ -83,6 +89,7 @@ public:
     }
     // Move assignment operator
     // No-Throw Guarantee
+    // Precondition- a valid tvsarray object
     TVSArray & operator=(TVSArray && other) noexcept
     {
         if(this == &other)
@@ -95,6 +102,7 @@ public:
     }
     // Dctor
     // No-Throw Guarantee
+    // No pre or post conditions. 
     ~TVSArray()
     {
         delete [] _data;
@@ -103,6 +111,7 @@ public:
 public:
     // operator[] - non-const & const
     // No-Throw Guarantee
+    // Precondition- value is within the size of the tvsarray
     value_type & operator[](size_type index)
     {
         return _data[index];
@@ -115,38 +124,45 @@ public:
 public:
     // size
     // No-Throw Guarantee
+    // No pre or post conditions
     size_type size() const
     {
         return _size;
     }
     // empty
     // No-Throw Guarantee
+    // No pre or post conditions
     bool empty() const
     {
         return size() == 0;
     }
     // begin - non-const & const
     // No-Throw Guarantee
+    // No pre or post conditions
     iterator begin()
     {
         return _data;
     }
+    // No pre or post conditions
     const_iterator begin() const
     {
         return _data;
     }
     // end - non-const & const
     // No-Throw Guarantee
+    // No pre or post conditions
     iterator end()
     {
         return begin() + size();
     }
+    // No pre or post conditions
     const_iterator end() const
     {
         return begin() + size();
     }
     // resize
     // Strong Guarantee
+    // Postcondition- the new tvsarray size is the size passed
     void resize(size_type newsize)
     {
         if (newsize <= _capacity)
@@ -175,6 +191,8 @@ public:
     }
     // insert
     // Basic Guarantee
+    // Precondition- position passed is within the size of the tvsarray
+    // Postcondition- the value passed was inserted into the tvsarray at the position passed and the size increases by one
     iterator insert(iterator pos,
                     const value_type & item)
     {
@@ -196,6 +214,8 @@ public:
     }
     // erase
     // Strong Guarantee
+    // Precondition- position passed is within the size of the tvsarray
+    // Postcondition- the value passed was removed from the tvsarray at the position passed and the size decreases by one
     iterator erase(iterator pos)
     {
         std::rotate(pos,pos+1,end());
@@ -205,6 +225,7 @@ public:
     // push_back
     // InsertEnd operation.
     // Strong Guarantee
+    // Postcondition- size is one larger, and the last entry is the passed value
     void push_back(const value_type & item)
     {
         insert(end(), item);
@@ -212,12 +233,14 @@ public:
     // pop_back
     // RemoveEnd operation.
     // Strong Guarantee
+    // Postcondition- the tvsarray has a size decrease of one
     void pop_back()
     {
         erase(end()-1);
     }
     // swap
     // No-Throw Guarantee
+    // Postcondition- the values of all member variables are swapped with those of the other tvsarray
     void swap(TVSArray & other) noexcept
     {
         std::swap(_capacity, other._capacity);
