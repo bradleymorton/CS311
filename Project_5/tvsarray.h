@@ -191,7 +191,6 @@ public:
             resize(_size -1);
             throw;
         }
-        //Useless message
 
         return i;
     }
