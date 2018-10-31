@@ -55,9 +55,14 @@ public:
                                     _data(new value_type[other.size()]),
                                     _capacity(other._capacity)
     {
-        for(int i=0; i<_size; ++i)
+        try
         {
-            _data[i]=other[i];
+            std::copy(other.begin(),other.end(),begin());
+        }
+        catch(...)
+        {
+            this->~TVSArray();
+            throw;
         }
     }
     // Move ctor
@@ -152,10 +157,20 @@ public:
 
         else
         {
-            TVSArray<value_type> newArr(newsize+500000);
-            std::copy(begin(),end(),newArr.begin());
-            swap(newArr);
-            _size-=500000;
+            _capacity = std::max(2*_capacity,newsize);
+            value_type * temp = new value_type[_capacity];
+            try
+            {
+                std::copy(begin(),end(),temp);
+            }
+            catch(...)
+            {
+                delete[] temp;
+                throw;
+            }
+            delete[] _data;
+            _data = temp;
+            _size = newsize;
         }
     }
     // insert
