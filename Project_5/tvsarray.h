@@ -52,7 +52,7 @@ public:
     // Strong Guarantee
     TVSArray(const TVSArray & other):
                                     _size(other.size()),
-                                    _data(new value_type[other.size()]),
+                                    _data(new value_type[other._capacity]),
                                     _capacity(other._capacity)
     {
         try
@@ -78,7 +78,7 @@ public:
     TVSArray & operator=(const TVSArray & other)
     {
         TVSArray temp(other);
-        mswap(temp);
+        swap(temp);
         return *this;
     }
     // Move assignment operator
@@ -89,8 +89,7 @@ public:
         {
             return *this;
         }
-        std::swap(_size, other._size);
-        std::swap(_data, other._data);
+        swap(other);
 
         return *this;
     }
@@ -154,27 +153,28 @@ public:
         {
             _size = newsize;
         }
-
         else
         {
-            _capacity = std::max(2*_capacity,newsize);
-            value_type * temp = new value_type[_capacity];
+            size_type newCapacity=std::max(2*_capacity,newsize);
+            value_type * temp = new value_type[newCapacity];
             try
             {
                 std::copy(begin(),end(),temp);
             }
             catch(...)
             {
+
                 delete[] temp;
                 throw;
             }
             delete[] _data;
             _data = temp;
             _size = newsize;
+            _capacity = newCapacity;
         }
     }
     // insert
-    // Strong Guarantee
+    // Basic Guarantee
     iterator insert(iterator pos,
                     const value_type & item)
     {
@@ -226,11 +226,6 @@ public:
     }
     // ***** TVSArray: data members *****
 private:
-    void mswap(TVSArray & toSwap) noexcept
-    {
-        std::swap(_size, toSwap._size);
-        std::swap(_data, toSwap._data);
-    }
     size_type    _capacity;  // Size of our allocated array
     size_type    _size;      // Size of client's data
     value_type * _data;      // Pointer to array
