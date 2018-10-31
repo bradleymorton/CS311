@@ -69,7 +69,7 @@ public:
     }
 
     // Copy assignment operator
-    // ??? Guarantee
+    // Strong guarantee
     TVSArray & operator=(const TVSArray & other)
     {
         TVSArray temp(other);
