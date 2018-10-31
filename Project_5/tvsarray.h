@@ -55,7 +55,14 @@ public:
                                     _data(new value_type[other.size()]),
                                     _capacity(other._capacity)
     {
+        try
         {
+            std::copy(other.begin(),other.end(),begin());
+        }
+        catch(...)
+        {
+            this->~TVSArray();
+            throw;
         }
     }
     // Move ctor
@@ -68,7 +75,6 @@ public:
 
     // Copy assignment operator
     // ??? Guarantee
-    // Strong guarantee
     TVSArray & operator=(const TVSArray & other)
     {
         TVSArray temp(other);
@@ -143,17 +149,28 @@ public:
     // resize
     // ??? Guarantee
     void resize(size_type newsize)
-    void resize(size_type newSize)
     {
         if (newsize <= _capacity)
-        if (newSize <= _capacity)
         {
             _size = newsize;
-            _size = newSize;
         }
 
         else
         {
+            _capacity = std::max(2*_capacity,newsize);
+            value_type * temp = new value_type[_capacity];
+            try
+            {
+                std::copy(begin(),end(),temp);
+            }
+            catch(...)
+            {
+                delete[] temp;
+                throw;
+            }
+            delete[] _data;
+            _data = temp;
+            _size = newsize;
         }
     }
     // insert
@@ -227,3 +244,23 @@ private:
 };  // End class TVSArray
 
 #endif // TVSARRAY_H_INCLUDED
+
+
+
+// void resize(size_type newSize)
+//     {
+//         if (newSize <= _capacity)
+//         {
+//             _size = newSize;
+//         }
+
+//         else
+//         {
+//             auto temp =new value_type[newSize+50000];
+//             std::copy(begin(),end(),temp);
+//             std::swap(temp, _data);
+//             delete [] temp;
+//             _capacity=newSize+50000;
+//             _size=newSize;
+//         }
+//     }
