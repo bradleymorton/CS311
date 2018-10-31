@@ -182,7 +182,7 @@ public:
         resize(_size+1);
         _data[_size-1] = item;
         iterator i = begin() + index;
-        
+
         try
         {
             std::rotate(i, begin() + _size -1, end());
@@ -192,7 +192,7 @@ public:
             throw;
         }
         //Useless message
-        
+
         return i;
     }
     // erase
