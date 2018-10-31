@@ -171,7 +171,9 @@ public:
     // ??? Guarantee
     iterator erase(iterator pos)
     {
-        return begin();
+        std::rotate(pos,pos+1,end());
+        resize(_size - 1);
+        return pos;
     }
     // push_back
     // InsertEnd operation.
@@ -179,7 +181,6 @@ public:
     void push_back(const value_type & item)
     {
         insert(end(), item);
-        ++_size;
     }
     // pop_back
     // RemoveEnd operation.
@@ -187,7 +188,6 @@ public:
     void pop_back()
     {
         erase(end()-1);
-        --_size;
     }
     // swap
     // No-Throw Guarantee
