@@ -3,7 +3,7 @@
 // Bradley Morton
 // Ian Ferguson
 // Started: 30 Oct 2018
-// Updated: 1 Nov 2018
+// Updated: 30 Nov 2018
 
 #ifndef TVSARRAY_H_INCLUDED
 #define TVSARRAY_H_INCLUDED
@@ -74,7 +74,7 @@ public:
     }
 
     // Copy assignment operator
-    // ??? Guarantee
+    // Strong Guarantee
     TVSArray & operator=(const TVSArray & other)
     {
         TVSArray temp(other);
@@ -147,7 +147,7 @@ public:
         return begin() + size();
     }
     // resize
-    // ??? Guarantee
+    // Strong Guarantee
     void resize(size_type newsize)
     {
         if (newsize <= _capacity)
@@ -174,7 +174,7 @@ public:
         }
     }
     // insert
-    // ??? Guarantee
+    // Strong Guarantee
     iterator insert(iterator pos,
                     const value_type & item)
     {
@@ -196,7 +196,7 @@ public:
         return i;
     }
     // erase
-    // ??? Guarantee
+    // Strong Guarantee
     iterator erase(iterator pos)
     {
         std::rotate(pos,pos+1,end());
@@ -205,14 +205,14 @@ public:
     }
     // push_back
     // InsertEnd operation.
-    // ??? Guarantee
+    // Strong Guarantee
     void push_back(const value_type & item)
     {
         insert(end(), item);
     }
     // pop_back
     // RemoveEnd operation.
-    // ??? Guarantee
+    // Strong Guarantee
     void pop_back()
     {
         erase(end()-1);
@@ -226,12 +226,6 @@ public:
         std::swap(_data, other._data);
     }
     // ***** TVSArray: data members *****
-public:
-    public:
-    size_type getCapacity()
-    {
-        return _capacity;
-    }
 private:
     void mswap(TVSArray & toSwap) noexcept
     {
@@ -244,23 +238,3 @@ private:
 };  // End class TVSArray
 
 #endif // TVSARRAY_H_INCLUDED
-
-
-
-// void resize(size_type newSize)
-//     {
-//         if (newSize <= _capacity)
-//         {
-//             _size = newSize;
-//         }
-
-//         else
-//         {
-//             auto temp =new value_type[newSize+50000];
-//             std::copy(begin(),end(),temp);
-//             std::swap(temp, _data);
-//             delete [] temp;
-//             _capacity=newSize+50000;
-//             _size=newSize;
-//         }
-//     }
