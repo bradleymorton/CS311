@@ -3,7 +3,7 @@
 // Bradley Morton
 // Ian Ferguson
 // Started: 30 Oct 2018
-// Updated: 30 Nov 2018
+// Updated: 1 Nov 2018
 
 #ifndef TVSARRAY_H_INCLUDED
 #define TVSARRAY_H_INCLUDED
@@ -13,10 +13,10 @@
 #include <algorithm>
 // For std::max;
 // *********************************************************************
-// class VSArray - Class definition
+// class TVSArray - Class definition
 // *********************************************************************
-// class VSArray
-// Very Smart Array of int.
+// class TVSArray
+// Templated Very Smart Array of template type.
 // Resizable, copyable/movable, exception-safe.
 // Invariants:
 //     0 <= _size <= _capacity.
@@ -34,11 +34,11 @@ public:
     // iterator, const_iterator: random-access iterator types
     using iterator = value_type *;
     using const_iterator = const value_type *;
-    // ***** VSArray: internal-use constants *****
+    // ***** TVSArray: internal-use constants *****
 private:
     // Capacity of default-constructed object
     enum { DEFAULT_CAP = 16 };
-    // ***** VSArray: ctors, dctor, op= *****
+    // ***** TVSArray: ctors, dctor, op= *****
 public:
     // Default ctor & ctor from size
     // Strong Guarantee
@@ -107,7 +107,7 @@ public:
     {
         delete [] _data;
     }
-    // ***** VSArray: general public operators *****
+    // ***** TVSArray: general public operators *****
 public:
     // operator[] - non-const & const
     // No-Throw Guarantee
@@ -120,7 +120,7 @@ public:
     {
         return _data[index];
     }
-    // ***** VSArray: general public functions *****
+    // ***** TVSArray: general public functions *****
 public:
     // size
     // No-Throw Guarantee
