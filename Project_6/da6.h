@@ -12,7 +12,10 @@
 
 
 template<typename ValType>
-void reverseList(shared_ptr<LLNode2<ValType>> & head);
+void reverseList(shared_ptr<LLNode2<ValType>> & head)
+{
+
+}
 
 
 template <typename Key, typename Data>
@@ -27,9 +30,8 @@ public:
     // ******************** ListMap Constructors and Destructors ******************
     //Default constructor, takes no parameters
     ListMap()
-    {
-        _head(nullptr);
-    }
+        : _head(nullptr)
+    {}
     //Default constructor
     ~ListMap()
     {}
@@ -48,7 +50,7 @@ public:
 
     const data_type * find(key_type key) const;
 
-    data_type * find(key_type key) const;
+    data_type * find(key_type key);
 
     //Returns true if the class has no key value pairs, false otherwise
     bool empty() const
