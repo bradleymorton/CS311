@@ -16,19 +16,19 @@ void reverseList(shared_ptr<LLNode2<ValType>> & head)
 {
     std::shared_ptr<LLNode2<ValType>> oldHead(nullptr);
     std::shared_ptr<LLNode2<ValType>> newHead(nullptr);
-    
+
     while(head)
     {
         oldHead = head->_next;
         head -> _next = newHead;
         newHead = head;
         head = oldHead;
-        
+
 
     }
-    
+
     head = newHead;
-    
+
 }
 
 
@@ -65,12 +65,14 @@ public:
 
     const data_type * find(key_type key) const
     {
-
+        //return &(_head->_data.second);
+        return nullptr;
     }
 
     data_type * find(key_type key)
     {
-
+        //return &(_head->_data.second);
+        return nullptr;
     }
 
     //Returns true if the class has no key value pairs, false otherwise
