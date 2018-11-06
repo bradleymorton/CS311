@@ -5,10 +5,11 @@
 #define DA6_H_INCLUDED
 
 #include "llnode2.h"
+//For llnode.h
 #include <algorithm>
 #include <functional>
 #include <memory>
-//For llnode.h
+
 
 template<typename ValType>
 void reverseList(shared_ptr<LLNode2<ValType>> & head);
@@ -24,18 +25,22 @@ public:
 
 public:
     // ******************** ListMap Constructors and Destructors ******************
+    //Default constructor, takes no parameters
     ListMap()
     {
         _head(nullptr);
     }
+    //Default constructor
     ~ListMap()
     {}
+    //Four of the Big Five are meant to not be available for use
     ListMap(const ListMap & base) = delete;
     ListMap(ListMap && other) = delete;
     ListMap & operator=(const ListMap & base) = delete;
     ListMap & operator=(const ListMap && other) = delete;
 
     // ******************* ListMap public member functions *************************
+    //Returns the size of the ListMap
     int size() const
     {
         return 0;
@@ -45,16 +50,19 @@ public:
 
     data_type * find(key_type key) const;
 
+    //Returns true if the class has no key value pairs, false otherwise
     bool empty() const
     {
         return (size()==0);
     }
 
+    //Inserts a key value pair into the data structure
     void insert(key_type key, data_type item)
     {
 
     }
 
+    //Erases a particular key and its associated value from the data structure
     void erase(key_type key)
     {
 
