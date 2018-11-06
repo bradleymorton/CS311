@@ -41,7 +41,9 @@ public:
         return 0;
     }
 
-    const data_type & find(key_type key) const;
+    const data_type * find(key_type key) const;
+
+    data_type * find(key_type key) const;
 
     bool empty() const
     {
