@@ -93,6 +93,7 @@ public:
 
     }
 
+    //Takes a function that is then applied to every object in the linked list. 
     void traverse(std::function<void(key_type, data_type)> function) const
     {
 
