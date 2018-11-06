@@ -50,14 +50,14 @@ public:
 
     }
 
-    void erase(key_type key);
+    void erase(key_type key)
     {
 
     }
 
     void traverse(std::function<void(key_type, data_type)> function) const
     {
-        
+
     }
 
 private:
