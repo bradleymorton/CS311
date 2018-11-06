@@ -3,11 +3,7 @@
 // Bradley Morton
 // Ian Ferguson
 // Started: 30 Oct 2018
-<<<<<<< HEAD
-// Updated: 01 Nov 2018
-=======
 // Updated: 1 Nov 2018
->>>>>>> a311fca01338948ec830722b7c639a743585f686
 
 #ifndef TVSARRAY_H_INCLUDED
 #define TVSARRAY_H_INCLUDED
@@ -20,11 +16,7 @@
 // class TVSArray - Class definition
 // *********************************************************************
 // class TVSArray
-<<<<<<< HEAD
-// Templated Very Smart Array of a template type.
-=======
 // Templated Very Smart Array of template type.
->>>>>>> a311fca01338948ec830722b7c639a743585f686
 // Resizable, copyable/movable, exception-safe.
 // Invariants:
 //     0 <= _size <= _capacity.
@@ -60,7 +52,7 @@ public:
     // Copy ctor
     // Strong Guarantee
     // Precondition- a valid tvsarray object to copy from
-    // Postcondition- a new object is created. 
+    // Postcondition- a new object is created.
     TVSArray(const TVSArray & other):
                                     _size(other.size()),
                                     _data(new value_type[other._capacity]),
@@ -110,7 +102,7 @@ public:
     }
     // Dctor
     // No-Throw Guarantee
-    // No pre or post conditions. 
+    // No pre or post conditions.
     ~TVSArray()
     {
         delete [] _data;
