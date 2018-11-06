@@ -35,6 +35,13 @@ public:
         return _size;
     }
     ListMap find();
+    bool empty()
+    {
+        if(_size==0)
+            return false;
+        else
+            return true;
+    }
     void insert(key_type key, data_type item);
     void erase(key_type key);
     ListMap traverse(std::function<void(key_type, data_type)> function);
