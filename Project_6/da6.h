@@ -45,11 +45,20 @@ public:
         return (_size==0);
     }
 
-    void insert(key_type key, data_type item);
+    void insert(key_type key, data_type item)
+    {
+
+    }
 
     void erase(key_type key);
+    {
 
-    void traverse(std::function<void(key_type, data_type)> function) const;
+    }
+
+    void traverse(std::function<void(key_type, data_type)> function) const
+    {
+        
+    }
 
 private:
     std::shared_ptr<LLNode2<std::pair<key_type, data_type>>> _head;
