@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <functional>
 #include <memory>
+#include <utility>
 
 
 template<typename ValType>
@@ -82,7 +83,7 @@ public:
     //Inserts a key value pair into the data structure
     void insert(key_type key, data_type item)
     {
-
+        push_front(_head,std::make_pair(key,item));
     }
 
     //Erases a particular key and its associated value from the data structure
