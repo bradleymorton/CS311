@@ -74,12 +74,28 @@ public:
 
     const data_type * find(key_type key) const
     {
-        return &(_head->_data.second);
+        auto headIter = _head;
+        while (headIter)
+        {
+            if (headIter->_data.first == key)
+            {
+                return &(headIter->_data.second);
+            }
+        }
+        return nullptr;
     }
 
     data_type * find(key_type key)
     {
-        return &(_head->_data.second);
+        auto headIter = _head;
+        while (headIter)
+        {
+            if (headIter->_data.first == key)
+            {
+                return &(headIter->_data.second);
+            }
+        }
+        return nullptr;
     }
 
     //Returns true if the class has no key value pairs, false otherwise
