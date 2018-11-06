@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <functional>
 #include <memory>
-//For lldone.h
+//For llnode.h
 
 template<typename ValType>
 void reverseList(shared_ptr<LLNode2<ValType>> & head);
