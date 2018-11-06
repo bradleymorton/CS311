@@ -81,6 +81,7 @@ public:
             {
                 return &(headIter->_data.second);
             }
+            headIter = headIter->_next;
         }
         return nullptr;
     }
@@ -94,6 +95,7 @@ public:
             {
                 return &(headIter->_data.second);
             }
+            headIter = headIter->_next;
         }
         return nullptr;
     }
