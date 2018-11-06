@@ -45,7 +45,7 @@ public:
 
     bool empty() const
     {
-        return (_size==0);
+        return (size()==0);
     }
 
     void insert(key_type key, data_type item)
