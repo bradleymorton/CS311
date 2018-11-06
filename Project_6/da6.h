@@ -35,7 +35,7 @@ public:
     // ******************* ListMap public member functions *************************
     int size() const
     {
-        return _size;
+        return 0;
     }
 
     const data_type & find(key_type key) const;
@@ -52,7 +52,6 @@ public:
     void traverse(std::function<void(key_type, data_type)> function) const;
 
 private:
-    int _size;
     std::shared_ptr<LLNode2<std::pair<key_type, data_type>>> _head;
 };
 
