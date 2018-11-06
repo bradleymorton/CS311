@@ -24,7 +24,10 @@ public:
 
 public:
     // ******************** ListMap Constructors and Destructors ******************
-    ListMap();
+    ListMap()
+    {
+        _head(nullptr);
+    }
     ~ListMap()
     {}
     ListMap(const ListMap & base) = delete;
