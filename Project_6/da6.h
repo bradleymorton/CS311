@@ -48,9 +48,15 @@ public:
         return 0;
     }
 
-    const data_type * find(key_type key) const;
+    const data_type * find(key_type key) const
+    {
 
-    data_type * find(key_type key);
+    }
+
+    data_type * find(key_type key)
+    {
+
+    }
 
     //Returns true if the class has no key value pairs, false otherwise
     bool empty() const
