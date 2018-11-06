@@ -16,13 +16,14 @@ void reverseList(shared_ptr<LLNode2<ValType>> & head);
 
 template <typename Key, typename Data>
 class ListMap {
-    
+
 public:
-    
+
     using key_type= Key;
     using data_type= Data;
-    
+
 public:
+    // ******************** ListMap Constructors and Destructors ******************
     ListMap();
     ~ListMap()
     {}
@@ -30,19 +31,26 @@ public:
     ListMap(ListMap && other) = delete;
     ListMap & operator=(const ListMap & base) = delete;
     ListMap & operator=(const ListMap && other) = delete;
-    int size()
+
+    // ******************* ListMap public member functions *************************
+    int size() const
     {
         return _size;
     }
+
     ListMap find();
-    bool empty()
+
+    bool empty() const
     {
         return (_size==0);
     }
+
     void insert(key_type key, data_type item);
+
     void erase(key_type key);
+
     ListMap traverse(std::function<void(key_type, data_type)> function);
-    
+
 private:
     int _size;
     std::shared_ptr<LLNode2<std::pair<key_type, data_type>>> _head;
