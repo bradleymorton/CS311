@@ -37,10 +37,7 @@ public:
     ListMap find();
     bool empty()
     {
-        if(_size==0)
-            return false;
-        else
-            return true;
+        return (_size==0);
     }
     void insert(key_type key, data_type item);
     void erase(key_type key);
