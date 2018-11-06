@@ -38,7 +38,7 @@ public:
         return _size;
     }
 
-    ListMap find();
+    const data_type & find(key_type key) const;
 
     bool empty() const
     {
@@ -49,7 +49,7 @@ public:
 
     void erase(key_type key);
 
-    ListMap traverse(std::function<void(key_type, data_type)> function);
+    void traverse(std::function<void(key_type, data_type)> function) const;
 
 private:
     int _size;
