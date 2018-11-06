@@ -109,6 +109,12 @@ public:
     //Inserts a key value pair into the data structure
     void insert(key_type key, data_type item)
     {
+        auto result = find(key);
+        if (result)
+        {
+            *result = item;
+            return;
+        }
         push_front(_head,std::make_pair(key,item));
     }
 
