@@ -6,6 +6,7 @@
 
 #include "llnode2.h"
 #include <algorithm>
+#include <functional>
 //For lldone.h
 
 template<typename ValType>
