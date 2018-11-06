@@ -65,14 +65,12 @@ public:
 
     const data_type * find(key_type key) const
     {
-        //return &(_head->_data.second);
-        return nullptr;
+        return &(_head->_data.second);
     }
 
     data_type * find(key_type key)
     {
-        //return &(_head->_data.second);
-        return nullptr;
+        return &(_head->_data.second);
     }
 
     //Returns true if the class has no key value pairs, false otherwise
