@@ -7,6 +7,7 @@
 #include "llnode2.h"
 //For llnode.h
 #include <algorithm>
+#include <cstddef>
 #include <functional>
 #include <memory>
 #include <utility>
@@ -59,9 +60,16 @@ public:
 
     // ******************* ListMap public member functions *************************
     //Returns the size of the ListMap
-    int size() const
+    size_t size() const
     {
-        return 0;
+        auto p = _head;  // Iterates through list
+        size_t n = 0;   // Number of nodes so far
+        while (p)
+        {
+            p = p->_next;
+            ++n;
+        }
+        return n;
     }
 
     const data_type * find(key_type key) const
