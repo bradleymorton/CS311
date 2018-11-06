@@ -14,8 +14,23 @@
 template<typename ValType>
 void reverseList(shared_ptr<LLNode2<ValType>> & head)
 {
+    std::shared_ptr<LLNode2<ValType>> oldHead(nullptr);
+    std::shared_ptr<LLNode2<ValType>> newHead(nullptr);
+    
+    while(head)
+    {
+        oldHead = head->_next;
+        head -> _next = newHead;
+        newHead = head;
+        head = oldHead;
+        
 
+    }
+    
+    head = newHead;
+    
 }
+
 
 
 template <typename Key, typename Data>

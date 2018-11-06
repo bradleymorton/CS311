@@ -17,7 +17,7 @@
                BlueprintIdentifier = "1A76AFCF21923A8700E2F70F"
                BuildableName = "Love"
                BlueprintName = "Love"
-               ReferencedContainer = "container:Love.xcodeproj">
+               ReferencedContainer = "container:../Love.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "1A76AFCF21923A8700E2F70F"
             BuildableName = "Love"
             BlueprintName = "Love"
-            ReferencedContainer = "container:Love.xcodeproj">
+            ReferencedContainer = "container:../Love.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "1A76AFCF21923A8700E2F70F"
             BuildableName = "Love"
             BlueprintName = "Love"
-            ReferencedContainer = "container:Love.xcodeproj">
+            ReferencedContainer = "container:../Love.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "1A76AFCF21923A8700E2F70F"
             BuildableName = "Love"
             BlueprintName = "Love"
-            ReferencedContainer = "container:Love.xcodeproj">
+            ReferencedContainer = "container:../Love.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
