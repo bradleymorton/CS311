@@ -78,7 +78,7 @@ public:
     //Returns true if the class has no key value pairs, false otherwise
     bool empty() const
     {
-        return (size()==0);
+        return isEmpty(_head);
     }
 
     //Inserts a key value pair into the data structure
@@ -93,7 +93,7 @@ public:
 
     }
 
-    //Takes a function that is then applied to every object in the linked list. 
+    //Takes a function that is then applied to every object in the linked list.
     void traverse(std::function<void(key_type, data_type)> function) const
     {
 
