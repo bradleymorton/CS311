@@ -121,7 +121,25 @@ public:
     //Erases a particular key and its associated value from the data structure
     void erase(key_type key)
     {
+        if (_head->_data.first == key)
+        {
+            _head = _head->_next;
+            return;
+        }
 
+        auto previousPtr = _head;
+        auto currentPtr = _head->_next;
+
+        while(currentPtr)
+        {
+            if (currentPtr->_data.first == key)
+            {
+                previousPtr->_next = currentPtr->_next;
+                return;
+            }
+            previousPtr = currentPtr;
+            currentPtr = currentPtr->_next;
+        }
     }
 
     //Takes a function that is then applied to every object in the linked list.
