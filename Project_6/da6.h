@@ -145,7 +145,12 @@ public:
     //Takes a function that is then applied to every object in the linked list.
     void traverse(std::function<void(key_type, data_type)> function) const
     {
-
+        auto iter=_head;
+        while(iter)
+        {
+            function(iter->_data.first, iter->_data.second);
+            iter=iter->_next;
+        }
     }
 
 private:
