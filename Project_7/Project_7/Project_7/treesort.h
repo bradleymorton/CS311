@@ -19,6 +19,16 @@ using std::vector;
 #include <iterator>
 using std::distance;
 
+
+//BSTreeNode(Binary Search Tree Node)
+//struct (No member types needed to be private)
+//Binary Search Tree Node template. Ownership of objects belongs to a shared_ptr.
+//Empty trees consist of an empty shared_ptr.
+//Invariants:
+//  _data = data
+//  _left = left in the node or a nullptr
+//  _right = right in the node or a nullptr
+
 template<typename ValueType>
 struct BSTreeNode
 {
@@ -27,8 +37,29 @@ struct BSTreeNode
     std::shared_ptr<BSTreeNode<ValueType>> _right;
     
     explicit BSTreeNode(const ValueType & data, std::shared_ptr<BSTreeNode<ValueType>> left = nullptr, std::shared_ptr<BSTreeNode<ValueType>> right = nullptr): _data(data), _left(left), _right(right) {}
-    ~BsTreeNode() = default;
+    ~BSTreeNode() = default;
 };
+
+//Insert
+//This function inserts a node into the correct position in a Binary Search Tree by comparing data to _data in the node's "children" and recursively calls the left or right children until it comes across a nullptr, which it will replace.
+//Pre:
+//  node MUST be a sharedptr to our BSTreeNode
+//
+template<typename ValueType>
+void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & data)
+{
+    if(node == nullptr)
+    {
+        node = std::make_shared<BSTreeNode<ValueType>>(data);
+        return;
+    }
+    
+    //Any data that is less than the node's data goes to the left of the node
+    if(data< node->_data)
+    {
+        insert(node->_left, data);
+    }
+}
 
 
 // treesort
@@ -45,12 +76,6 @@ void treesort(FDIter first, FDIter last)
     // ValType is the type that FDIter points to
     using ValType = typename iterator_traits<FDIter>::value_type;
 
-    // THE FOLLOWING IS DUMMY CODE. IT WILL PASS ALL TESTS, BUT IT DOES
-    // NOT MEET THE REQUIREMENTS OF THE PROJECT.
-    vector<ValType> buff(distance(first, last));
-    move(first, last, buff.begin());
-    stable_sort(buff.begin(), buff.end());
-    move(buff.begin(), buff.end(), first);
 }
 
 
