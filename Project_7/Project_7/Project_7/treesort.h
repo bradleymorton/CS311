@@ -74,9 +74,9 @@ void traversal(std::shared_ptr<BSTreeNode<ValueType>> & node, FDIter & iter)
 	{
 		return;
 	}
-	traversal(node._left, iter);
-	*iter++=node._data;
-	traversal(node._right, iter);
+	traversal(node->_left, iter);
+	*iter++=node->_data;
+	traversal(node->_right, iter);
 
 }
 
