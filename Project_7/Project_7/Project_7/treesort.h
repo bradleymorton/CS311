@@ -29,6 +29,8 @@ using std::distance;
 //  _data = data
 //  _left = left in the node or a nullptr
 //  _right = right in the node or a nullptr
+//Requirements on Types:
+//
 
 template<typename ValueType>
 struct BSTreeNode
@@ -71,7 +73,7 @@ void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & dat
 // treesort
 // Sort a given range using Treesort.
 // Pre:
-//     ???
+//     Insert must be written and have its own pre-conditions satisfied.
 // Requirements on Types:
 //     ???
 // Exception safety guarantee:
