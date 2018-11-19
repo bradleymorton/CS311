@@ -1,6 +1,6 @@
-// treesort.h  INCOMPLETE
-// Glenn G. Chappell
-// 12 Nov 2018
+// treesort.h  COMPLETE
+// Code done by Ian Ferguson, Andrew Adler, and Bradley Morton Working from Glenn L. Chappel's skeleton code
+// 18 Nov 2018
 //
 // For CS 311 Fall 2018
 // Header for function template treesort
