@@ -18,6 +18,7 @@ using std::move;
 using std::vector;
 #include <iterator>
 using std::distance;
+#include <memory>
 
 
 //BSTreeNode(Binary Search Tree Node)
@@ -59,6 +60,11 @@ void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & dat
     {
         insert(node->_left, data);
     }
+    //If anything doesn't fit this case, we'll assume that it's equal to or greater than the node's data.
+    else
+    {
+        insert(node -> _right, data);
+    }
 }
 
 
@@ -73,8 +79,17 @@ void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & dat
 template<typename FDIter>
 void treesort(FDIter first, FDIter last)
 {
-    // ValType is the type that FDIter points to
-    using ValType = typename iterator_traits<FDIter>::value_type;
+    // ValueType is the type that FDIter points to
+    using ValueType = typename iterator_traits<FDIter>::value_type;
+    
+    
+    //Creates a Binary Search Tree by creating an empty Tree Node then using insert to iterate through and fill each
+    //value.
+    std::shared_ptr<BSTreeNode<ValueType>> head = nullptr;
+    for(FDIter item = first; item != last; ++item)
+    {
+        insert(head, *item);
+    }
 
 }
 
