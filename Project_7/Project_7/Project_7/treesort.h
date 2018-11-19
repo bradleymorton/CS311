@@ -37,7 +37,7 @@ struct BSTreeNode
     ValueType _data;
     std::shared_ptr<BSTreeNode<ValueType>> _left;
     std::shared_ptr<BSTreeNode<ValueType>> _right;
-    
+
     explicit BSTreeNode(const ValueType & data, std::shared_ptr<BSTreeNode<ValueType>> left = nullptr, std::shared_ptr<BSTreeNode<ValueType>> right = nullptr): _data(data), _left(left), _right(right) {}
     ~BSTreeNode() = default;
 };
@@ -55,7 +55,7 @@ void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & dat
         node = std::make_shared<BSTreeNode<ValueType>>(data);
         return;
     }
-    
+
     //Any data that is less than the node's data goes to the left of the node
     if(data< node->_data)
     {
@@ -93,8 +93,8 @@ void treesort(FDIter first, FDIter last)
 {
     // ValueType is the type that FDIter points to
     using ValueType = typename iterator_traits<FDIter>::value_type;
-    
-    
+
+
     //Creates a Binary Search Tree by creating an empty Tree Node then using insert to iterate through and fill each
     //value.
     std::shared_ptr<BSTreeNode<ValueType>> head = nullptr;
