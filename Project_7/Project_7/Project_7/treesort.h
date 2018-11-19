@@ -67,7 +67,8 @@ void insert(std::shared_ptr<BSTreeNode<ValueType>> & node, const ValueType & dat
         insert(node -> _right, data);
     }
 }
-
+template<typename ValueType,typename FDIter>
+void traversal(std::shared_ptr<BSTreeNode<ValueType>> & node, FDIter & iter);
 
 // treesort
 // Sort a given range using Treesort.
