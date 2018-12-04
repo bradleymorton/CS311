@@ -1,6 +1,7 @@
-// cuber_test_suites.cpp  INCOMPLETE
-// Glenn G. Chappell
-// 27 Nov 2018
+// cuber_test_suites.cpp
+// Andrew Adler, Bradley Morton, Ian Ferguson
+// Skeleton provided by Glenn G. Chappell
+// 3 Dec 2018
 //
 // For CS 311 Fall 2018
 // Tests for class Cuber: test suites
