@@ -18,7 +18,7 @@ using std::iterator;
 
 int main()
 {
-    std::cout << "Dick." << std::endl;
+    std::cout << "Richard." << std::endl;
     fstream fs ("followers_text.txt");
     
     map<string, int> mp;
