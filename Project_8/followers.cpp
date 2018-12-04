@@ -10,15 +10,17 @@
 #include <map>
 #include <fstream>
 #include <iterator>
-
+#include <set>
 using std::fstream;
 using std::string;
 using std::map;
+using std::set;
 using std::iterator;
 
-void UniqueCount(map<string, int> mp)
+/*
+void UniqueCount(map<string, set<string>> mp)
 {
-    for(map<string, int> :: iterator p = mp.begin(); p != mp.end(); p++)
+    for(map<string, set<string>> :: iterator p = mp.begin(); p != mp.end(); p++)
     {
         if (p -> second ==1)
         {
@@ -27,25 +29,24 @@ void UniqueCount(map<string, int> mp)
     }
     
 }
+*/
 
 int main()
 {
-    std::ifstream fs ("followers_text.txt");
-    map<string, int> mp;
+    std::ifstream fs;
+    fs.open("followers_test.txt");
+    map<string, set<string> > mp;
     if(fs.is_open())
     {
         while(fs.good())
         {
             string words;
             fs >> words;
+            std::cout << words << std::endl;
             
             if(mp.find(words) == mp.end())
             {
-                mp[words] = 1;
-            }
-            else
-            {
-                mp[words]++;
+                //mp[words] = 1;
             }
         }
     }
@@ -54,8 +55,6 @@ int main()
         std::cerr << "cannot open file." << std::endl;
         return EXIT_FAILURE;
     }
-    UniqueCount(mp);
-    
     return EXIT_SUCCESS;
 
 }
