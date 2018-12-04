@@ -24,7 +24,7 @@
 // Test Cases
 // *********************************************************************
 
-//Tests to see if 
+//Tests to see if positive ints work
 TEST_CASE("Positive ints")
 {
     Cuber cc;
@@ -49,6 +49,7 @@ TEST_CASE("Positive ints")
     }
 }
 
+//Tests to see if negative ints work
 TEST_CASE("Negative ints")
 {
     Cuber cc;
@@ -73,6 +74,7 @@ TEST_CASE("Negative ints")
     }
 }
 
+//Tests to see if positive doubles work
 TEST_CASE("Positive doubles")
 {
 	Cuber cc;
@@ -97,7 +99,7 @@ TEST_CASE("Positive doubles")
 	}
 }
 
-
+//Tests to see if negative doubles work
 TEST_CASE("Negative doubles")
 {
 	Cuber cc;
@@ -123,6 +125,7 @@ TEST_CASE("Negative doubles")
 
 }
 
+//Tests to see if const objects work 
 TEST_CASE("Const Cubers")
 {
     const Cuber cc{};
