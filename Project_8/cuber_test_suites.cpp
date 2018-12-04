@@ -24,8 +24,59 @@
 // *********************************************************************
 
 
-TEST_CASE("DUMMY")
+TEST_CASE("Positive ints")
 {
-    // DUMMY TEST CASE
+    Cuber cc;
+    {
+    	INFO("5 cubed is 125");
+    	REQUIRE(cc(5)==125);
+    }
+
+    {
+    	INFO("10 cubed is 1000");
+    	REQUIRE(cc(10)==1000);
+    }
+
+    {
+    	INFO("15 cubed is 3375");
+    	REQUIRE(cc(15)==3375);
+    }
+
+    {
+    	INFO("20 cubed is 8000");
+    	REQUIRE(cc(20)==8000);
+    }
 }
 
+TEST_CASE("Negative ints")
+{
+    Cuber cc;
+    {
+    	INFO("-5 cubed is -125");
+    	REQUIRE(cc(-5)==-125);
+    }
+
+    {
+    	INFO("-10 cubed is -1000");
+    	REQUIRE(cc(-10)==-1000);
+    }
+
+    {
+    	INFO("-15 cubed is -3375");
+    	REQUIRE(cc(-15)==-3375);
+    }
+
+    {
+    	INFO("-20 cubed is -8000");
+    	REQUIRE(cc(-20)==-8000);
+    }
+}
+
+TEST_CASE("Positive doubles")
+{
+	Cuber cc;
+	{
+		INFO("1.1 cubed is 1.331");
+		REQUIRE(cc(1.1)==Approx(1.331));
+	}
+}
