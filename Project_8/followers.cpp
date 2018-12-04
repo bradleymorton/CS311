@@ -36,18 +36,31 @@ int main()
     std::ifstream fs;
     fs.open("followers_test.txt");
     map<string, set<string> > mp;
+    string nextWord;
+    string currentWord;
     if(fs.is_open())
     {
-        while(fs.good())
+        while(true)
         {
-            string words;
-            fs >> words;
-            std::cout << words << std::endl;
-            
-            if(mp.find(words) == mp.end())
+            if (currentWord == "")
             {
-                //mp[words] = 1;
+                fs >> currentWord;
             }
+            
+            fs >> nextWord;
+            if (!fs) 
+            {
+                if (fs.eof()) 
+                {
+                    string empty;
+                    mp[currentWord].insert(empty);
+                    break;
+                }
+            }
+            
+            mp[currentWord].insert(nextWord);
+            
+            currentWord = nextWord;
         }
     }
     else
@@ -55,8 +68,21 @@ int main()
         std::cerr << "cannot open file." << std::endl;
         return EXIT_FAILURE;
     }
-    return EXIT_SUCCESS;
 
+    std::cout << "Unique count: " << mp.size() << std::endl;
+
+    for(map<string, set<string> >::iterator p = mp.begin(); p != mp.end(); p++)
+    {
+        std::cout << p -> first << ": ";
+        set<string> myset = p -> second;
+        for(set<string>::iterator it=myset.begin(); it!=myset.end(); ++it)
+        {
+            std::cout << *it << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return EXIT_SUCCESS;
 }
 
 
