@@ -17,9 +17,6 @@
                              // Disable some features for faster compile
 #include "catch.hpp"         // For the "Catch" unit-testing framework
 
-// Additional includes for this test program
-
-
 // *********************************************************************
 // Test Cases
 // *********************************************************************
