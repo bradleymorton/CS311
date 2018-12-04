@@ -125,7 +125,7 @@ TEST_CASE("Negative doubles")
 
 TEST_CASE("Const Cubers")
 {
-	const Cuber cc;
+    const Cuber cc{};
 	{
 		INFO("5 cubed is 125");
 		REQUIRE(cc(5)==125);
