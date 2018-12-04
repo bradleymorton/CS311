@@ -79,4 +79,54 @@ TEST_CASE("Positive doubles")
 		INFO("1.1 cubed is 1.331");
 		REQUIRE(cc(1.1)==Approx(1.331));
 	}
+
+	{
+		INFO("2.2 cubed is 10.648");
+		REQUIRE(cc(2.2)==Approx(10.648));
+	}
+
+	{
+		INFO("3.3 cubed is 35.937");
+		REQUIRE(cc(3.3)==Approx(35.937));
+	}
+
+	{
+		INFO("4.4 cubed is 85.184");
+		REQUIRE(cc(4.4)==Approx(85.184));
+	}
+}
+
+
+TEST_CASE("Negative doubles")
+{
+	Cuber cc;
+	{
+		INFO("-1.1 cubed is -1.331");
+		REQUIRE(cc(-1.1)==Approx(-1.331));
+	}
+
+	{
+		INFO("-2.2 cubed is -10.648");
+		REQUIRE(cc(-2.2)==Approx(-10.648));
+	}
+
+	{
+		INFO("-3.3 cubed is -35.937");
+		REQUIRE(cc(-3.3)==Approx(-35.937));
+	}
+
+	{
+		INFO("-4.4 cubed is -85.184");
+		REQUIRE(cc(-4.4)==Approx(-85.184));
+	}
+
+}
+
+TEST_CASE("Const Cubers")
+{
+	const Cuber cc;
+	{
+		INFO("5 cubed is 125");
+		REQUIRE(cc(5)==125);
+	}
 }
