@@ -33,8 +33,17 @@ void UniqueCount(map<string, set<string>> mp)
 
 int main()
 {
+    std::string filename;
     std::ifstream fs;
-    fs.open("followers_test.txt");
+    while (true) 
+    {
+        std::cout << "Enter the name of the file to search through: "<<std::endl;
+        std::getline(std::cin, filename);
+        fs.open(filename);
+        if(fs.is_open()) break;
+        std::cout<<"Invalid file name. Try again"<<std::endl;
+    }
+    
     map<string, set<string> > mp;
     string nextWord;
     string currentWord;
@@ -59,7 +68,7 @@ int main()
             }
             
             mp[currentWord].insert(nextWord);
-            
+
             currentWord = nextWord;
         }
     }
