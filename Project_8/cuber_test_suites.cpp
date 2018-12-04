@@ -131,3 +131,27 @@ TEST_CASE("Const Cubers")
 		REQUIRE(cc(5)==125);
 	}
 }
+
+//Test for argument of type char
+TEST_CASE("Proper argument types")
+{
+    Cuber cc;
+    {
+        int charInt = 345;
+        auto intSize = sizeof(int);
+        INFO("Cannot have arugments of type char")
+        REQUIRE(sizeof(cc(charInt)) >= intSize);
+    }
+    {
+        INFO("'a' cube is '!'");
+        REQUIRE(cc('a') == '!');
+    }
+    {
+        INFO("';' cubed is 'C'")
+        REQUIRE("cc(';') == 'C'");
+    }
+    {
+        INFO("'9' cubed is 'i'")
+        REQUIRE("cc('9') == 'i'");
+    }
+}
